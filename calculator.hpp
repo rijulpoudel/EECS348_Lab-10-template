@@ -1,10 +1,12 @@
-#ifndef __CALCULATOR_HPP
-#define __CALCULATOR_HPP
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
 
 #include <string>
+#include <vector>
 
-// this function should expect that `expression` has already been
-// validated and thus throw no exceptions
-double parse_number(const std::string &expression);
+std::vector<std::string> readNumbersFromFile(const std::string& filename);
+bool isValidDouble(const std::string& s);
+std::string addDoublesAsStrings(const std::string& a, const std::string& b);
 
-#endif // __CALCULATOR_HPP
+#endif
+
