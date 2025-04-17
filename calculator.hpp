@@ -7,6 +7,7 @@
 std::vector<std::string> readNumbersFromFile(const std::string& filename);
 bool isValidDouble(const std::string& s);
 std::string addDoublesAsStrings(const std::string& a, const std::string& b);
+double parse_number(const std::string& s);
 
 #endif
 

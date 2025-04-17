@@ -90,3 +90,37 @@ std::string addDoublesAsStrings(const std::string& a, const std::string& b) {
 
     return intSum + "." + fracSum;
 }
+
+double parse_number(const std::string& s) {
+    if (!isValidDouble(s)) {
+        throw std::invalid_argument("Invalid double format");
+    }
+
+    // Parse manually
+    bool negative = false;
+    size_t i = 0;
+    if (s[i] == '+' || s[i] == '-') {
+        negative = (s[i] == '-');
+        i++;
+    }
+
+    double result = 0.0;
+    while (i < s.length() && isdigit(s[i])) {
+        result = result * 10 + (s[i] - '0');
+        i++;
+    }
+
+    if (i < s.length() && s[i] == '.') {
+        i++;
+        double frac = 0.0, divisor = 10.0;
+        while (i < s.length() && isdigit(s[i])) {
+            frac += (s[i] - '0') / divisor;
+            divisor *= 10;
+            i++;
+        }
+        result += frac;
+    }
+
+    return negative ? -result : result;
+}
+
